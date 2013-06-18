@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Ftp site scoladoc" default="transfert_ftp" basedir="../">
+	<description>
+		Transfert les fichiers sur le site de présentattion du projet
+	</description>
+	<property name="ant.dir" value="${basedir}/ant" />
+	<loadproperties srcFile="${ant.dir}/paths.properties" />
+	<target name="transfert_ftp">
+		<input message="mot de passe" addproperty="divers.hebergement.web" />
+		<ftp verbose="true" server="${nom.hebergement.web}" port="21" remotedir="." userid="${login.hebergement.web}" password="${divers.hebergement.web}" passive="yes" depends="no">
+			<fileset dir="${basedir}/content">
+			</fileset>
+		</ftp>
+
+	</target>
+</project>
